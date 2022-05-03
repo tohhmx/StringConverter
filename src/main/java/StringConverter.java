@@ -20,24 +20,24 @@ public class StringConverter {
 
     public static String convertStr(String input){
         input = input.substring(3);
-        String returnStr = "";
+        StringBuilder sb = new StringBuilder();
 
         for(int i =0; i<input.length()-1; i++){
             int j = i + 1;
             if(Character.isLowerCase(input.charAt(i)) && Character.isUpperCase(input.charAt(j)) && Character.isUpperCase(input.charAt(j+1))){
-                returnStr += input.charAt(i);
-                returnStr += "_";
+                sb.append(input.charAt(i));
+                sb.append("_");
 
             }else if(Character.isUpperCase(input.charAt(i)) && Character.isLowerCase(input.charAt(j)) && i!=0){
-                returnStr += "_";
-                returnStr += input.charAt(i);
+                sb.append("_");
+                sb.append(input.charAt(i));
             }else{
-                returnStr += input.charAt(i);
+                sb.append(input.charAt(i));
             }
         }
-        returnStr += input.charAt(input.length()-1);
+        sb.append(input.charAt(input.length()-1));
 
-        return returnStr;
+        return String.valueOf(sb);
     }
 }
 
